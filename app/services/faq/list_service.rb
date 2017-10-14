@@ -11,9 +11,10 @@ module FaqModule
       if @action == "search"
         faqs = Faq.search(@query).where(company: @company)
       elsif @action == "search_by_hashtag"
-        faqs = @company.faqs.select do |faq|
-          faq.hashtags.detect do |hashtag|
-            hashtag.name == @query
+        faqs = []
+        @company.faqs.each do |faq|
+          faq.hashtags.each do |hashtag|
+            faqs << faq if hashtag.name == @query
           end
         end
       else
