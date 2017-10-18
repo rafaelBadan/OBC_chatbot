@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :url do
-    url FFaker::Internet.http_url
-    hashtag
+    pathurl FFaker::Internet.http_url
+    company
   end
 end
