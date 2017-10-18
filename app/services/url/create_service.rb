@@ -4,7 +4,7 @@ module UrlModule
       # TODO: identify origin and set company
       @company = Company.last
       @pathurl = params["pathurl"]
-      @hashtags = params["hashtags-original"]
+      @hashtags = params["hashtags"]
     end
 
     def call

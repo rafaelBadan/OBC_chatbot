@@ -17,7 +17,7 @@ describe UrlModule::CreateService do
     end
 
     it "With valid params, receive success message" do
-      @createService = UrlModule::CreateService.new({"pathurl" => @url, "hashtags" => @hashtag})
+      @createService = UrlModule::CreateService.new({"pathurl" => @url, "hashtags" => @hashtags})
 
       response = @createService.call()
       expect(response).to match("Criado com sucesso")
