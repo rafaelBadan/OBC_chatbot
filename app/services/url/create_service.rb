@@ -1,10 +1,9 @@
-module FaqModule
+module UrlModule
   class CreateService
     def initialize(params)
       # TODO: identify origin and set company
       @company = Company.last
-      @question = params["question-original"]
-      @answer = params["answer-original"]
+      @pathurl = params["pathurl"]
       @hashtags = params["hashtags-original"]
     end
 
@@ -13,10 +12,10 @@ module FaqModule
       return 'Hashtag Obrigatória' if @hashtags == nil || @hashtags == ""
 
       begin
-        Faq.transaction do
-          faq = Faq.create(question: @question, answer: @answer, company: @company)
+        Url.transaction do
+          url = Url.create(pathurl: @pathurl, company: @company)
           @hashtags.split(/[\s,]+/).each do |hashtag|
-            faq.hashtags << Hashtag.create(name: hashtag)
+            url.hashtags << Hashtag.create(name: hashtag)
           end
         end
         "Criado com sucesso"
