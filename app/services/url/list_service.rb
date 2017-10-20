@@ -9,6 +9,7 @@ module UrlModule
 
     def call
       if @action == "search_links"
+        # TODO: fix search to allow search by substring
         urls = Url.search(@query).where(company: @company)
       elsif @action == "search_links_by_hashtag"
         urls = []
@@ -25,7 +26,7 @@ module UrlModule
       urls.each do |u|
         response += "*#{u.id}* - "
         response += "*#{u.pathurl}*\n"
-        f.hashtags.each do |h|
+        u.hashtags.each do |h|
           response += "_##{h.name}_ "
         end
         response += "\n\n"
