@@ -15,9 +15,9 @@ class HelpService
     response += ">Mostra a lista de perguntas e respostas\n\n"
     response += "*Adicione um novo link*\n"
     response += ">Adiciona uma nova url\n\n"
-    response += "*pesquise links com a hashtag X*\n"
+    response += "*Pesquise links com a hashtag X*\n"
     response += ">Lista os links salvos, marcados com a hashtag\n\n"
-    response += "*pesquise links com X*\n"
+    response += "*Pesquise links com X*\n"
     response += ">Lista os links salvos, que contem X\n\n"
 
   end

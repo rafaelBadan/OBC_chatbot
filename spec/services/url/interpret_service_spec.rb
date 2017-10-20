@@ -1,31 +1,29 @@
-require_relative './../spec_helper.rb'
+require_relative './../../spec_helper.rb'
 
 describe InterpretService do
   before :each do
     @company = create(:company)
   end
 
-  describe '#list' do
-    it "With zero faqs, return don't find message" do
-      response = InterpretService.call('list', {})
+  describe '#list_links' do
+    it "With zero urls, return don't find message" do
+      response = InterpretService.call('list_links', {})
       expect(response).to match("Nada encontrado")
     end
 
-    it "With two faqs, find questions and answer in response" do
-      faq1 = create(:faq, company: @company)
-      faq2 = create(:faq, company: @company)
+    it "With two urls, find pathurl in response" do
+      url1 = create(:url, company: @company)
+      url2 = create(:url, company: @company)
 
-      response = InterpretService.call('list', {})
+      response = InterpretService.call('list_links', {})
 
-      expect(response).to match(faq1.question)
-      expect(response).to match(faq1.answer)
+      expect(response).to match(url1.pathurl)
+      expect(response).to match(url2.pathurl)
 
-      expect(response).to match(faq2.question)
-      expect(response).to match(faq2.answer)
     end
   end
-
-  describe '#search' do
+  # TODO: from this line below replace the appropriate tests for testing Urls 
+  describe '#search_links' do
     it "With empty query, return don't find message" do
       response = InterpretService.call('search', {"query": ''})
       expect(response).to match("Nada encontrado")

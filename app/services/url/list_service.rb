@@ -10,7 +10,7 @@ module UrlModule
     def call
       if @action == "search_links"
         # TODO: fix search to allow search by substring
-        urls = Url.search(@query).where(company: @company)
+        urls = Url.search(@query).where({pathurl: "%#{@query}%", company: @company})
       elsif @action == "search_links_by_hashtag"
         urls = []
         @company.urls.each do |url|
