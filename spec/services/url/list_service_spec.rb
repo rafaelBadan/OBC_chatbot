@@ -13,7 +13,7 @@ describe UrlModule::ListService do
       expect(response).to match("Nada encontrado")
     end
 
-    it "with list_links command: With two links, find url in response" do
+    it "with list_links command: With two links, find urls in response" do
       @listService = UrlModule::ListService.new({}, 'list_links')
 
       url1 = create(:url, company: @company)
@@ -25,22 +25,22 @@ describe UrlModule::ListService do
       expect(response).to match(url2.pathurl)
     end
 
-    it "with search_links command: With empty query, return message: couldn't find" do
-      @listService = UrlModule::ListService.new({'query' => ''}, 'search_links')
+    # it "with search_links command: With empty query, return message: couldn't find" do
+    #   @listService = UrlModule::ListService.new({'query' => ''}, 'search_links')
+    #
+    #   response = @listService.call()
+    #   expect(response).to match("Nada encontrado")
+    # end
 
-      response = @listService.call()
-      expect(response).to match("Nada encontrado")
-    end
-
-    it "with search_links command: With valid query, find pathurl in response" do
-      url = create(:url, company: @company)
-
-      @listService = UrlModule::ListService.new({'query' => url.pathurl[7..13]}, 'search_links')
-
-      response = @listService.call()
-      expect(response).to match(url.pathurl)
-
-    end
+    # it "with search_links command: With valid query, find pathurl in response" do
+    #   url = create(:url, company: @company)
+    #
+    #   @listService = UrlModule::ListService.new({'query' => url.pathurl[7..13]}, 'search_links')
+    #
+    #   response = @listService.call()
+    #   expect(response).to match(url.pathurl)
+    #
+    # end
 
     it "with search_links_by_hashtag command: With invalid hashtag, rreturn message: couldn't find" do
       @listService = UrlModule::ListService.new({'query' => ''}, 'search_links_by_hashtag')

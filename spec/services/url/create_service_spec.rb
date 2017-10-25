@@ -28,7 +28,6 @@ describe UrlModule::CreateService do
 
       response = @createService.call()
       expect(Url.last.pathurl).to match(@url)
-      expect(Url.last.hashtags).to match(@hashtags)
     end
 
     it "With valid params, hashtags are created" do

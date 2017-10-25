@@ -17,8 +17,5 @@ class HelpService
     response += ">Adiciona uma nova url\n\n"
     response += "*Pesquise links com a hashtag X*\n"
     response += ">Lista os links salvos, marcados com a hashtag\n\n"
-    response += "*Pesquise links com X*\n"
-    response += ">Lista os links salvos, que contem X\n\n"
-
   end
 end
